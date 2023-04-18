@@ -2,7 +2,7 @@ name: train-and-deploy-churn-model
 
 on:
   push:
-    branches: [ "uat", "prd" ]
+    branches: [ "preprod", "prod" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up cpdctl credentials
         env:
           CPD_USER_NAME: ${{ secrets.CPD_USER_NAME }}
-          CPD_USER_APIKEY: ${{ secrets.CPD_USER_APIKEY }}
+          CPD_USER_APIKEY: ${{ secrets.CPD_USER_API_KEY }}
           CPD_URL: ${{ vars.CPD_URL }}
         run: |
           src/scripts/configure-cpdctl.sh
